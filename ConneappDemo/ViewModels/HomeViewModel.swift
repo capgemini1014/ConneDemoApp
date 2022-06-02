@@ -69,7 +69,6 @@ class HomeViewModel {
         }
     }
     
-    
     func createCellViewModel(weatherList: List ) -> WeatherListCellViewModel {
         
         let dateAndTime = weatherList.dt_txt?.components(separatedBy: " ")
@@ -77,14 +76,10 @@ class HomeViewModel {
         
         return WeatherListCellViewModel(temperature: weatherList.main?.temp ?? 0.0, time: time, date: date, weatherIcon: weatherList.weather?[0].icon ?? "")
     }
-    
-//    func getCellViewModel( at indexPath: IndexPath ) -> WeatherListCellViewModel {
-//        return cellViewModels[indexPath.row]
-//    }
-    
+
     private func processFetchedTopStories( weatherLists: [List] ) {
         
-        self.weatherLists = weatherLists // Cache
+        self.weatherLists = weatherLists
         var vms = [WeatherListCellViewModel]()
         for topStory in weatherLists {
             vms.append(createCellViewModel(weatherList: topStory))
